@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asni Herawati Zai - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-bg: #0a0e27;
+            --secondary-bg: #151932;
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc8;
+            --accent-blue: #00f2ff;
+            --accent-purple: #9945ff;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Background Particles */
+        .bg-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(10, 14, 39, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            padding: 15px 5%;
+            background: rgba(10, 14, 39, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+        }
+        
+        .hero-container {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero-content {
+            flex: 1.5;
+        }
+        
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInLeft 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            animation: fadeInLeft 1.2s ease;
+        }
+        
+        .typing-effect::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% {
+                opacity: 1;
+            }
+            51%, 100% {
+                opacity: 0;
+            }
+        }
+        
+        .hero-description {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.7;
+            animation: fadeInLeft 1.4s ease;
+            font-size: 1.05rem;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            animation: fadeInLeft 1.6s ease;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: var(--text-primary);
+            border: none;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--accent-blue);
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            transform: translateX(0);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 242, 255, 0.3);
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero-img {
+            width: 350px;
+            height: 350px;
+            border-radius: 30px;
+            object-fit: cover;
+            border: 4px solid var(--accent-blue);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.4);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 35px;
+            z-index: 1;
+            opacity: 0.5;
+            animation: rotate 10s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .hero-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(153, 69, 255, 0.6);
+        }
+        
+        /* About Section */
+        #about {
+            background-color: var(--secondary-bg);
+            padding: 70px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+        
+        .about-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-img-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            object-fit: cover;
+            border: 4px solid var(--accent-purple);
+            box-shadow: 0 0 40px rgba(153, 69, 255, 0.4);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .about-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: 15px;
+            bottom: 15px;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            border-radius: 25px;
+            z-index: 1;
+            opacity: 0.5;
+            animation: rotate-reverse 10s linear infinite;
+        }
+        
+        @keyframes rotate-reverse {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+        
+        .about-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 242, 255, 0.6);
+        }
+        
+        .about-text {
+            flex: 1.5;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--accent-blue);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+        }
+        
+        .education-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid var(--glass-border);
+            margin-top: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .education-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(153, 69, 255, 0.2);
+            border-color: var(--accent-purple);
+        }
+        
+        .education-card h4 {
+            color: var(--accent-purple);
+            margin-bottom: 10px;
+        }
+        
+        /* Skills Section */
+        #skills {
+            padding: 70px 0;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        
+        .skill-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .skill-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .skill-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .skill-level {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+            border-radius: 5px;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        /* Experience Section */
+        #experience {
+            background-color: var(--secondary-bg);
+            padding: 70px 0;
+        }
+        
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .experience-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1), rgba(153, 69, 255, 0.1));
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .experience-card:hover::before {
+            opacity: 1;
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(153, 69, 255, 0.2);
+            border-color: var(--accent-purple);
+        }
+        
+        .experience-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+        
+        .experience-card .company {
+            color: var(--accent-purple);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .experience-card .period {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .experience-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        /* Certifications Section */
+        #certifications {
+            padding: 70px 0;
+        }
+        
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .certification-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-purple), var(--accent-blue));
+        }
+        
+        .certification-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(153, 69, 255, 0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .certification-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .certification-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .certification-icon i {
+            font-size: 1.8rem;
+            color: var(--text-primary);
+        }
+        
+        .certification-title {
+            flex: 1;
+        }
+        
+        .certification-title h3 {
+            color: var(--accent-blue);
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+        
+        .certification-issuer {
+            color: var(--accent-purple);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .certification-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .certification-date i {
+            font-size: 0.8rem;
+        }
+        
+        .certification-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .certification-credential {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(0, 242, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            border-radius: 20px;
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .certification-credential:hover {
+            background: var(--accent-blue);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 242, 255, 0.3);
+        }
+        
+        .certification-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            background: rgba(153, 69, 255, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 15px;
+            color: var(--accent-purple);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        
+        /* Contact Section - Tanpa form, hanya info kontak */
+        #contact {
+            background-color: var(--secondary-bg);
+            padding: 70px 0;
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 242, 255, 0.2);
+            border-color: var(--accent-blue);
+        }
+        
+        .contact-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            color: var(--accent-blue);
+            transform: translateY(-3px);
+        }
+        
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--accent-purple);
+        }
+        
+        .contact-item span {
+            font-size: 1rem;
+        }
+        
+        .social-section {
+            margin-top: 40px;
+        }
+        
+        .social-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--accent-blue);
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: transparent;
+            border: 2px solid var(--accent-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-blue);
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: var(--text-primary);
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 25px rgba(0, 242, 255, 0.4);
+            border-color: transparent;
+        }
+        
+        .cta-button {
+            margin-top: 40px;
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            transform: translateX(0);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(153, 69, 255, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: var(--primary-bg);
+            color: var(--text-secondary);
+            border-top: 1px solid var(--glass-border);
+        }
+        
+        /* Animasi Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Animasi Fade In */
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 4%;
+            }
+            
+            nav.scrolled {
+                padding: 10px 4%;
+            }
+            
+            .container {
+                width: 95%;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--secondary-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 20px 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            /* Hero section responsive */
+            .hero-container {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                text-align: center;
+                flex: 1;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-image {
+                flex: 1;
+            }
+            
+            .hero-img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            /* About section responsive */
+            .about-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .about-img {
+                width: 220px;
+                height: 220px;
+            }
+            
+            /* Contact section responsive */
+            .contact-info {
+                padding: 40px 30px;
+            }
+            
+            .contact-details {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            .contact-item {
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            section {
+                padding: 50px 0;
+            }
+            
+            /* Certifications responsive */
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .certification-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .certification-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav {
+                padding: 15px 3%;
+            }
+            
+            nav.scrolled {
+                padding: 10px 3%;
+            }
+            
+            .container {
+                width: 95%;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 20px;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .hero-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .about-img {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .contact-info {
+                padding: 30px 20px;
+            }
+            
+            .contact-description {
+                font-size: 1rem;
+            }
+            
+            .social-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .certification-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Particles -->
+    <div class="bg-particles" id="particles"></div>
+    
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">Asni's Portfolio</div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container">
+            <div class="hero-container reveal">
+                <div class="hero-content">
+                    <h1>Asni Herawati Zai</h1>
+                    <p class="subtitle"><span id="typingText" class="typing-effect"></span></p>
+                    <p class="hero-description">
+                    Welcome to my digital space. This portfolio showcases my journey, technical projects, and professional growth as an System and Technology Information student. Explore my work to see how i bring creative concepts to life through technology and innovation.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#experience" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrapper">
+                        <img src="gambar.jpg" alt="John Doe" class="hero-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title reveal">About Me</h2>
+            <div class="about-content reveal">
+                <div class="about-image">
+                    <div class="about-img-wrapper">
+                        <img src="gambar.jpg" alt="Profile" class="about-img">
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h3>Hello, I'm Asni Herawati Zai</h3>
+                    <p>
+                        I am an IT student at Institut Teknologi Sawit Indonesia with a strong interest in web development, digital design, and data management. I believe that technology can transform the world into a better place, and I want to be part of that change.
+                    </p>
+                    <p>
+                        During my studies, I have developed various technical and soft skills that enable me to contribute effectively to technology projects.
+                    </p>
+                    
+                    <div class="education-card">
+                        <h4>🎓 Pendidikan</h4>
+                        <p><strong>S1 Sistem dan Teknologi Informasi</strong></p>
+                        <p>Institut Teknologi Sawit Indonesia</p>
+                        <p>2024 - Present</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title reveal">My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                    <div class="skill-name">HTML</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
+                    <div class="skill-name">CSS</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="85"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fab fa-js"></i></div>
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="80"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fab fa-figma"></i></div>
+                    <div class="skill-name">Figma</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="75"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fas fa-cube"></i></div>
+                    <div class="skill-name">SketchUp</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="70"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fas fa-file-word"></i></div>
+                    <div class="skill-name">Microsoft Office</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="90"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fas fa-video"></i></div>
+                    <div class="skill-name">CapCut</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="85"></div>
+                    </div>
+                </div>
+                
+                <div class="skill-card reveal">
+                    <div class="skill-icon"><i class="fas fa-palette"></i></div>
+                    <div class="skill-name">Canva</div>
+                    <div class="skill-level">
+                        <div class="skill-progress" data-level="95"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title reveal">My Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card reveal">
+                    <h3>Awardee BPDP Scholarship</h3>
+                    <div class="company">BPDP</div>
+                    <div class="period">September 2024 - present</div>
+                    <p>
+                    I am a recipient of the Palm Oil Scholarship from BPDPKS, which fully funds my university education. This achievement reflects my commitment, dedication, and academic performance. As a scholarship awardee, I am responsible for maintaining strong academic results, continuously developing my skills, and contributing positively to the industry and society.</p>
+                </div>
+                
+                <div class="experience-card reveal">
+                    <h3>Campus Ambassador Popsurvey</h3>
+                    <div class="company">Popsurvey by Populix</div>
+                    <div class="period">February 2026 - Present</div>
+                    <p>
+                    I am a PopSurvey Campus Ambassador who actively introduces and promotes the PopSurvey platform within the campus environment. In this role, I demonstrate strong communication skills, confidence in public speaking, and the ability to build wide networks with students and communities. I am also skilled in time management, teamwork, and have strong initiative and creativity in developing effective promotional strategies.
+
+                    </p>
+                </div>
+                
+                <div class="experience-card reveal">
+                    <h3>Secretary of Partnership Division of APMI</h3>
+                    <div class="company">ASOSIASI PLANTERS MUDA INDONESIA</div>
+                    <div class="period">December 2025 - present</div>
+                    <p>
+                        I serve as the Secretary of the Partnership Division at APMI, responsible for managing partnership administration and building professional relationships with external stakeholders. In this role, I demonstrate strong communication and negotiation skills, attention to detail in document management, and the ability to prepare proposals and reports systematically. I am also proactive in establishing strategic partnerships and maintaining the organization's professionalism.
+                    </p>
+                </div>
+                <div class="experience-card reveal">
+                    <h3>Multimedia Division at Pers Mahasiswa SIGMA ITSI </h3>
+                    <div class="company">Institut Teknologi Sawit Indonesia</div>
+                    <div class="period">January 2026 - present</div>
+                    <p>
+                    I am a member of the Multimedia Division at Pers Mahasiswa SIGMA ITSI, responsible for creating and managing visual content and organizational media publications. In this role, I develop creativity in graphic design, photo and video editing, and social media management. I also demonstrate strong teamwork skills, good time management, and attention to detail in delivering information through digital media.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title reveal">My Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-card reveal">
+                    <div class="certification-header">
+                        <div class="certification-icon">
+                           <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="certification-title">
+                            <h3>Basic Web Programming</h3>
+                            <div class="certification-issuer">Dicoding</div>
+                        </div>
+                    </div>
+                    <div class="certification-date">
+                        <i class="far fa-calendar"></i> Issued: January 2025
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <p class="certification-description">
+                       A certificate of completion for the Basic Web Programming course at Dicoding Academy. This program comprehensively covered the fundamentals of HTML and CSS as the core foundation of web development, including document structure, semantic elements, styling, box model, positioning, responsive layout using Flexbox, and final project implementation. The course required 41 total learning hours and was completed with a final exam and website project submission.
+                    </p>
+                    <a href="dicoding.pdf" class="certification-credential" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
+                
+                <div class="certification-card reveal">
+                    <div class="certification-header">
+                        <div class="certification-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="certification-title">
+                            <h3>Programming Concepts</h3>
+                            <div class="certification-issuer">Digitalent</div>
+                        </div>
+                    </div>
+                    <div class="certification-date">
+                        <i class="far fa-calendar"></i> Issued: October 2025
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <p class="certification-description">
+                        A Micro Skill training certificate from the Digital Talent Scholarship 2025 program organized by the Center for Digital Literacy Development. This training covered fundamental programming concepts, including algorithmic logic and basic program structures, as a foundation for building systematic coding skills.
+                    </p>
+                    <a href="Sertifikat_ASNI HERAWATI ZAI_Konsep Pemrograman.pdf" class="certification-credential">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
+                
+                <div class="certification-card reveal">
+                    <div class="certification-header">
+                        <div class="certification-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="certification-title">
+                            <h3>Introduction to Cloud Computing</h3>
+                            <div class="certification-issuer">Digitalent</div>
+                        </div>
+                    </div>
+                    <div class="certification-date">
+                        <i class="far fa-calendar"></i> Issued: November 2025
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <p class="certification-description">
+                        A Micro Skill training certificate from the Digital Talent Scholarship 2025 program organized by the Center for Digital Literacy Development. This training covered the fundamental concepts of cloud computing and its service models, providing an introduction to cloud technology in supporting digital infrastructure and system development.
+                    </p>
+                    <a href="Sertifikat_ASNI HERAWATI ZAI_Introduction to Cloud Computing.pdf" class="certification-credential">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
+                
+                <div class="certification-card reveal">
+                    <div class="certification-header">
+                        <div class="certification-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <div class="certification-title">
+                            <h3>Shaping Your Future with a Digital Mindset</h3>
+                            <div class="certification-issuer">Digitalent</div>
+                        </div>
+                    </div>
+                    <div class="certification-date">
+                        <i class="far fa-calendar"></i> Issued: November 2025
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <p class="certification-description">
+                        A Micro Skill training certificate from the Digital Talent Scholarship 2025 program organized by the Center for Digital Literacy Development. This training covered the importance of a digital mindset, its key elements, and strategies to build an adaptive way of thinking in facing technological transformation and the digital era.
+                    </p>
+                    <a href="Sertifikat_ASNI HERAWATI ZAI_Pengantar Mindset Digital 1 _ Mengubah Masa Depan Anda Dengan Pola Pikir Digital.pdf" class="certification-credential">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
+                
+                <div class="certification-card reveal">
+                    <div class="certification-header">
+                        <div class="certification-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="certification-title">
+                            <h3>Digital Defense 101 for Individuals and SMEs: Protecting Your Online World</h3>
+                            <div class="certification-issuer">Digitalent</div>
+                        </div>
+                    </div>
+                    <div class="certification-date">
+                        <i class="far fa-calendar"></i> Issued: October 2025
+                        <span class="certification-badge">Verified</span>
+                    </div>
+                    <p class="certification-description">
+                        A Micro Skill training certificate from the Digital Talent Scholarship 2025 program organized by the Center for Digital Literacy Development. This training covered fundamental digital security practices, including device and account management, software updates, strong password creation with two-factor authentication, and protection against phishing, malware, and other cyber threats for individuals and small businesses.
+                    </p>
+                    <a href="Sertifikat_ASNI HERAWATI ZAI_Pertahanan Digital 101 untuk Individu dan UMKM_ Melindungi Dunia Daring Anda.pdf" class="certification-credential">
+                        <i class="fas fa-external-link-alt"></i> View Credential
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section - Tanpa Form -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title reveal">Contact Me</h2>
+            <div class="contact-container reveal">
+                <div class="contact-info">
+                    <p class="contact-description">
+                        Thank you for taking the time to explore my portfolio. 
+                        Let's connect and create something valuable together.
+                    </p>
+                    <div class="social-section">
+                        <h3>Connect With Me</h3>
+                        <div class="social-icons">
+                            <a href="https://www.instagram.com/asni_zaii?igsh=c24yNms4N3ppYW9m" target="_blank" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/asni-herawati-zai-8a8232341/" target="_blank" class="social-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/johndoe" target="_blank" class="social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="mailto:zaiasni71@gmail.com" class="social-icon">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                            <a href="https://wa.me/6282286430900" target="_blank" class="social-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <a href="mailto:zaiasni71@gmail.com" class="cta-button">
+                        <i class="fas fa-paper-plane"></i> Send Me an Email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Asni Herawati Zai. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Typing Effect
+        const typingText = document.getElementById('typingText');
+        const text = 'System and Technology Information Student at Institut Teknologi Sawit Indonesia';
+        let index = 0;
+        
+        function typeText() {
+            if (index < text.length) {
+                typingText.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeText, 50);
+            } else {
+                // Remove cursor after typing is complete
+                setTimeout(() => {
+                    typingText.classList.remove('typing-effect');
+                }, 1000);
+            }
+        }
+        
+        // Start typing effect when page loads
+        window.addEventListener('load', typeText);
+        
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.getElementById('navbar').offsetHeight;
+                    const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Reveal animation on scroll
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                    
+                    // Animate skill bars when visible
+                    if (reveals[i].querySelector('.skill-progress')) {
+                        const skillBars = reveals[i].querySelectorAll('.skill-progress');
+                        skillBars.forEach(bar => {
+                            const level = bar.getAttribute('data-level');
+                            setTimeout(() => {
+                                bar.style.width = level + '%';
+                            }, 200);
+                        });
+                    }
+                }
+            }
+        }
+        
+        window.addEventListener('scroll', reveal);
+        
+        // Initial check for elements in view
+        reveal();
+        
+        // Create particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 3 + 1;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 10;
+                
+                // Random delay
+                const delay = Math.random() * 5;
+                
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDuration = `${duration}s`;
+                particle.style.animationDelay = `${delay}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Create particles on page load
+        window.addEventListener('load', createParticles);
+        
+        // Add hover effect to contact items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
